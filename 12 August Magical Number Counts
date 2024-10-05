@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+int countMagicalNumber(int n){
+    int count = 0;
+    for(int i=1; i<=n; i++){
+        int zeroCount = 0;
+        int num = i;
+        while(num){
+            if(num % 2 == 0) zeroCount++;
+            num = num/2;
+        }
+        if(zeroCount % 2 == 1) count++;
+    }
+    return count;
+    
+}
+int main() {
+    int num;
+    cin>>num;
+    cout<<countMagicalNumber(num);
+    return 0;
+}
