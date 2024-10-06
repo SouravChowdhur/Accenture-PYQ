@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+
+int countScore(string str){
+    int score = 0;
+    int countHead = 0;
+    for(int i = 0; i<str.length(); i++){
+        if(str[i] == 'H'){
+            score = score + 2;
+            countHead++;
+            if(countHead == 3){
+                return score;
+            }
+        }
+        else{
+            score = score - 1;
+            countHead = 0;
+        }
+    }
+    return score;
+}
+int main() {
+    string str;
+    cin>>str;
+    cout<<countScore(str);
+    return 0;
+}
