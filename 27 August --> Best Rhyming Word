@@ -1,0 +1,41 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+
+int longestCommonSuffix(string str1, string str2){
+    int count = 0;
+    int i = str1.length() - 1;
+    int j = str2.length() - 1;
+    while(i>=0 && j>=0 && str1[i] == str2[j]){
+        count++;
+        j--;
+        i--;
+    }
+    return count;
+}
+
+string bestRhymingWord(vector<string> arr, string input){
+    string ans = "";
+    int max_suffix_len = 0;
+    for(auto word: arr){
+        int current_suffix_len = longestCommonSuffix(input, word);
+        if(current_suffix_len > max_suffix_len || current_suffix_len == max_suffix_len && word.length()<ans.length()){
+            current_suffix_len = max_suffix_len;
+            ans = word;
+        }
+    }
+    return ans;
+}
+
+int main() {
+    int n;
+    cin>>n;
+    vector<string> arr(n);
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+    string input;
+    cin>>input;
+    cout<<bestRhymingWord(arr, input);
+    return 0;
+}
