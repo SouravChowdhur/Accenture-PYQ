@@ -1,0 +1,26 @@
+#include <iostream>
+#include<cmath>
+using namespace std;
+
+bool googlyPrime(int num){
+    int sum = 0;
+    while(num > 0){
+        int digit = num%10;
+        sum = sum + digit;
+        num = num/10;
+    }
+    for(int i = 2; i<=sqrt(sum); i++){
+        if(sum%i == 0){
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int n;
+    cin>>n;
+    if(googlyPrime(n)) cout<<"YES";
+    else cout<<"NO";
+    return 0;
+}
