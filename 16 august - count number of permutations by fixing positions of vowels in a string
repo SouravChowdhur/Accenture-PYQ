@@ -15,6 +15,7 @@ int main() {
     cin>>s;
     int countConsonent = 0;
     unordered_map<char, int> mp;
+    unordered_map<char, int> consonantCount;
     mp['A']++;
     mp['E']++;
     mp['I']++; 
@@ -28,12 +29,19 @@ int main() {
     for(int i=0; i<s.length(); i++){
         if(mp.find(s[i]) == mp.end()){
             countConsonent++;
+            consonantCount[s[i]]++;
         }
     }
     if(countConsonent == 0){
        cout<<0;
        return 0;
     }
-    cout<<fact(countConsonent);
+    int result = fact(countConsonent);
+    for (auto it : consonantCount) {
+        if (it.second > 1) {
+            result /= fact(it.second);
+        }
+    }
+    cout << result;
     return 0;
 }
