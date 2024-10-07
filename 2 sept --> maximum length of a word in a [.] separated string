@@ -1,0 +1,29 @@
+#include <iostream>
+#include<climits>
+using namespace std;
+
+
+int maxLength(string str){
+    int maxLen = INT_MIN;
+    int len;
+    int i = 0;
+    int j = 0;
+    while(i<=str.length()-1 && j<=str.length()-1){
+        if(str[j] != '.'){
+            j++;
+        }
+        else{
+            len = j-i;
+            maxLen = max(len, maxLen);
+            i = j+1;
+            j++;
+        }
+    }
+    return maxLen;
+}
+int main() {
+    string str;
+    cin>>str;
+    cout<<maxLength(str);
+    return 0;
+}
