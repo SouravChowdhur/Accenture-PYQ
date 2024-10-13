@@ -1,1 +1,41 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
 
+
+bool isPrime(int n){
+    if(n <= 1) return false;
+    for(int i=2; i<=sqrt(n); i++){
+        if(n % i == 0)
+            return false;
+    }
+    return true;
+}
+
+int nextPrime(int n){
+    int candidate = n+1;
+    while(true){
+        if(isPrime(candidate)){
+            return candidate;
+        }
+        candidate++;
+    }
+}
+
+bool isNextPrime(int n1, int n2){
+    if(!isPrime(n1) || !isPrime(n2))
+         return false;
+    return nextPrime(n1) == n2;
+}
+
+int main(){
+    int n1, n2;
+    cin>>n1>>n2;
+    if(isNextPrime(n1, n2)){
+        cout<<"True"<<endl;
+    }
+    else{
+        cout<<"False"<<endl;
+    }
+    return 0;
+}
