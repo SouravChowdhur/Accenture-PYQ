@@ -20,7 +20,7 @@ int longestSubarraySum(vector<int> arr, int k){
             len = i - mp[rem];
             maxLen = max(maxLen, len);
         }
-        if(mp.find(rem) == mp.end()){
+        if(mp.find(sum) == mp.end()){
             mp[sum] = i;
         }
     }
